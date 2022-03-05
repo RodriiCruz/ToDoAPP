@@ -5,6 +5,8 @@ import com.rodrigoecruz.todoapp.dto.TaskDTO;
 import com.rodrigoecruz.todoapp.entity.Task;
 import com.rodrigoecruz.todoapp.entity.TaskStatus;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,9 +15,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class TaskMapper {
-    
+
     public Task newTaskToTask(NewTaskDTO in) {
-        
+
         return Task.builder()
                 .title(in.getTitle())
                 .description(in.getDescription())
@@ -25,7 +27,7 @@ public class TaskMapper {
                 .taskStatus(TaskStatus.ON_TIME)
                 .build();
     }
-    
+
     public TaskDTO taskToTaskDTO(Task in) {
         return TaskDTO.builder()
                 .id(in.getId())
@@ -36,5 +38,16 @@ public class TaskMapper {
                 .finished(in.isFinished())
                 .taskStatus(in.getTaskStatus())
                 .build();
+    }
+
+    public List<TaskDTO> listTaskToDto(List<Task> in) {
+        List<TaskDTO> out = new ArrayList();
+
+        for (Task task : in) {
+            TaskDTO dto = taskToTaskDTO(task);
+            out.add(dto);
+        }
+
+        return out;
     }
 }
