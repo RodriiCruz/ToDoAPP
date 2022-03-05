@@ -1,11 +1,7 @@
-package com.rodrigoecruz.todoapp.entity;
+package com.rodrigoecruz.todoapp.dto;
 
+import com.rodrigoecruz.todoapp.entity.*;
 import java.time.LocalDateTime;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,14 +9,10 @@ import lombok.Data;
  *
  * @author Rodrigo Cruz
  */
-@Entity
-@Table(name = "tasks")
 @Data
 @Builder
-public class Task {
+public class TaskDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
     private String description;
