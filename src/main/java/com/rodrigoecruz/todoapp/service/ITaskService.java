@@ -16,4 +16,6 @@ public interface ITaskService {
     List<TaskDTO> getAll();
 
     List<TaskDTO> getAllByTaskStatus(TaskStatus status);
+
+    void markTaskAsFinished(Long id);
 }

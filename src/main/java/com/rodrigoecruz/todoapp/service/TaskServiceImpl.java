@@ -48,4 +48,10 @@ public class TaskServiceImpl implements ITaskService {
         
         return mapper.listTaskToDto(tasks);
     }
+    
+    @Override
+    @Transactional
+    public void markTaskAsFinished(Long id) {
+        repository.markTaskAsFinished(id);
+    }
 }
