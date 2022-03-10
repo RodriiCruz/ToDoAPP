@@ -1,6 +1,8 @@
 package com.rodrigoecruz.todoapp.dto;
 
 import java.time.LocalDateTime;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -10,7 +12,12 @@ import lombok.Data;
 @Data
 public class NewTaskDTO {
 
+    @NotBlank
     private String title;
+
+    @NotBlank
     private String description;
+
+    @NotNull
     private LocalDateTime eta;
 }

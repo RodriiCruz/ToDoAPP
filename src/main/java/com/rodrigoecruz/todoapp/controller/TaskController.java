@@ -5,6 +5,7 @@ import com.rodrigoecruz.todoapp.dto.TaskDTO;
 import com.rodrigoecruz.todoapp.entity.TaskStatus;
 import com.rodrigoecruz.todoapp.service.ITaskService;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class TaskController {
     private ITaskService service;
 
     @PostMapping
-    public ResponseEntity<TaskDTO> createTask(@RequestBody NewTaskDTO dto) {
+    public ResponseEntity<TaskDTO> createTask(@Valid @RequestBody NewTaskDTO dto) {
         TaskDTO response = service.createTask(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
